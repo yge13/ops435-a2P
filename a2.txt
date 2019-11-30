@@ -1,0 +1,169 @@
+#OPS435 Assignment 2P - Fall 2019
+#Program: a2_yge13.py 
+#Author: "yge13"
+#The python code in this file (a1_[Student_id].py) is original work written by "yge13". No code in this file is copied from any other source except those provided by the course instructor, including any person, textbook, or on-line resource. I have not shared this python script with anyone or anything except for submission for grading.  I understand that the Academic Honesty Policy will be enforced and violators will be reported and appropriate action will be taken.
+
+class Date:
+   def __init__(self,year=0,month=0,day=0):
+       self.year = year
+       self.month = month
+       self.day = day   
+
+   import sys  
+   
+   def tomorrow(self):
+       str_year, str_month, str_day = self.year, self.month, self.day
+       year = int(str_year) 
+       month = int(str_month)
+       day = int(str_day)
+
+       lyear = year % 4
+       if lyear == 0:
+          feb_max = 29
+       else:
+          feb_max = 28
+
+       lyear = year % 100
+       if lyear == 0:
+          feb_max = 28
+
+       lyear = year % 400
+       if lyear == 0:
+          feb_max = 29
+
+       tmp_day = day + 1
+
+       mon_max = { 1:31, 2:feb_max, 3:31, 4:30, 5:31, 6:30, 7:31, 8:31, 9:30, 10:31, 11:30, 12:31}
+       tmp_day = day + 1
+       if tmp_day > mon_max[month]:
+          to_day = tmp_day % mon_max[month]
+          tmp_month = month + 1
+       else:
+          to_day = tmp_day
+          tmp_month = month + 0
+
+       if tmp_month > 12:
+           to_month = 1
+           year = year + 1
+       else:
+           to_month = tmp_month + 0
+
+       next_date = str(year)+"-"+str(to_month).zfill(2)+"-"+str(to_day).zfill(2)
+       return next_date
+
+   def yesterday(self):
+       str_year, str_month, str_day = self.year, self.month, self.day
+       year = int(str_year) 
+       month = int(str_month)
+       day = int(str_day)
+
+       lyear = year % 4
+       if lyear == 0:
+          feb_max = 29
+       else:
+          feb_max = 28
+
+       lyear = year % 100
+       if lyear == 0:
+          feb_max = 28
+
+       lyear = year % 400
+       if lyear == 0:
+          feb_max = 29
+
+       tmp_day = day - 1 
+       mon_max = { 1:31, 2:feb_max, 3:31, 4:30, 5:31, 6:30, 7:31, 8:31, 9:30, 10:31, 11:30, 12:31}
+       tmp_day = day - 1
+       if tmp_day <= 0:
+          to_month = month - 1
+          if to_month == 0:
+            year = year -1
+            to_month == 12
+            to_day = mon_max[to_month] - 1
+          else:
+            to_day = mon_max[to_month]
+       else:
+          to_month = month
+          to_day = tmp_day
+
+       before_date = str(year)+"-"+str(to_month).zfill(2)+"-"+str(to_day).zfill(2)
+       return before_date
+
+
+   def sum_date(self, t2):
+       str_year, str_month, str_day = self.year, self.month, self.day
+       year = int(str_year) 
+       month = int(str_month)
+       day = int(str_day)
+
+      lyear = year % 4
+       if lyear == 0:
+          feb_max = 29
+       else:
+          feb_max = 28
+
+       lyear = year % 100
+       if lyear == 0:
+          feb_max = 28
+
+       lyear = year % 400
+       if lyear == 0:
+          feb_max = 29
+
+
+       mon_max = { 1:31, 2:feb_max, 3:31, 4:30, 5:31, 6:30, 7:31, 8:31, 9:30, 10:31, 11:30, 12:31}
+       tmp_day = day +t2
+       if tmp_day <= 0:
+          to_month = month - 1
+          if to_month == 0:
+            year = year -1
+            to_month == 12
+            to_day = mon_max[to_month]-(abs(t2)-1)
+          else:
+            to_day = mon_max[to_month]
+       else:
+          to_month = month
+          to_day = tmp_day
+
+       sum_date = str(year)+"-"+str(to_month).zfill(2)+"-"+str(to_day).zfill(2)
+       return sum_date
+
+    def week_of_day(self, t3):
+       if len(self) != 10:
+       return '0000-00-00'
+       
+       offset = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334]
+       afterFeb = 1
+       if month > 2: 
+       afterFeb = 0
+
+       lyear = year % 4
+       if lyear == 0:
+          feb_max = 29
+       else:
+          feb_max = 28
+
+       lyear = year % 100
+       if lyear == 0:
+          feb_max = 28
+
+       lyear = year % 400
+       if lyear == 0:
+          feb_max = 29
+
+       mon_max = { 1:31, 2:feb_max, 3:31, 4:30, 5:31, 6:30, 7:31, 8:31, 9:30, 10:31, 11:30, 12:31}
+       tmp_day = day % 7
+       if tmp_day <= 0:
+          to_month = month - 1
+          if to_month == 0:
+            year = year -1
+            to_month == 12
+            to_day = mon_max[to_month]-(abs(t2)-1)
+          else:
+            to_day = mon_max[to_month]
+       else:
+          to_month = month
+          to_day = tmp_day
+
+       day_week = str(year)+"-"+str(to_month).zfill(2)+"-"+str(to_day).zfill(2)
+       return date_week
